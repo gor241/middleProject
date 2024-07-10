@@ -1,7 +1,7 @@
 import { ResolveOptions } from 'webpack';
 
 /** Функция возвращающая объект с расширениями */
-export function buildResolve(): ResolveOptions {
+export function buildResolves(): ResolveOptions {
     return {
         extensions: ['.tsx', '.ts', '.js'],
     };
