@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './index.scss';
-import Counter from './components/Counter/Counter';
+import { Route, Routes, Link } from 'react-router-dom';
+import { MainPageAsync } from './pages/MainPage/MainPage.async';
+import { AboutPageAsync } from './pages/AboutPage/AboutPage.async';
 
 const App = () => {
     return (
         <div className="app">
-            <Counter />
+            <Link to={'/'}>MainPage</Link>
+            <Link to={'/about'}>AboutPage</Link>
+            {/* Suspense нужен для lazy компонентов */}
+            <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                    <Route path={'/about'} element={<AboutPageAsync />} />
+                    <Route path={'/'} element={<MainPageAsync />} />
+                </Routes>
+            </Suspense>
         </div>
     );
 };
