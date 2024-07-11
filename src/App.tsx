@@ -1,12 +1,16 @@
-import React, { Suspense } from 'react';
-import './index.scss';
+import React, { Suspense} from 'react';
+import './styles/index.scss';
 import { Route, Routes, Link } from 'react-router-dom';
 import { MainPageAsync } from './pages/MainPage/MainPage.async';
 import { AboutPageAsync } from './pages/AboutPage/AboutPage.async';
+import { useTheme } from './theme/useTheme';
 
 const App = () => {
+    const { theme, toggleTheme } = useTheme();
+
     return (
-        <div className="app">
+        <div className={`app ${theme}`}>
+            <button onClick={toggleTheme}>click</button>
             <Link to={'/'}>MainPage</Link>
             <Link to={'/about'}>AboutPage</Link>
             {/* Suspense нужен для lazy компонентов */}
