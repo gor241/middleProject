@@ -1,5 +1,5 @@
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from './ThemeContext';
 import React, { FC, useMemo, useState } from 'react';
+import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext';
 
 /** Компонент для оборачивания в context и получения доступа к темам(светлая/тёмная) */
 const ThemeProvider: FC = ({ children }) => {
