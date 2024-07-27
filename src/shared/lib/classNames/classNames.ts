@@ -7,12 +7,12 @@ type Mods = Record<string, boolean | string>;
  * 3) additional - массив дополнительных классов  */
 export function classNames(
     cls: string,
-    mods: Mods,
-    additional: string[]
+    mods: Mods = {},
+    additional: string[] = []
 ): string {
     return [
         cls, // добавляем основное имя класса
-        ...additional, // добавляем все дополнительные классы из массива additional
+        ...additional.filter(Boolean), // добавляем все дополнительные классы из массива additional
         ...Object.entries(mods) // преобразуем объект mods в массив пар [ключ, значение]
             .filter(([className, value]) => Boolean(value)) // фильтруем пары, оставляя только те, у которых значение приводится к true
             .map(([className]) => className), // из оставшихся пар берем только ключи (имена классов)

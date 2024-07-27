@@ -37,6 +37,8 @@
         "compilerOptions": {
             "module": "CommonJS"
         }
+        // Ддя того, что бы работали svg импорты
+        // "include": ["src/components", "src/custom.d.ts"]
     }
     // Это нужно для того, что бы использовать import(вместо require) в webpack.config
 }

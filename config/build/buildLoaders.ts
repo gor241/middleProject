@@ -5,6 +5,12 @@ import { BuildOptions } from './types/config';
 /** Функция возвращающая массив лоудеров */
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     // Выносить в переменный лоудеры для соблюдения порядка в массиве
+
+    const svgLoader = {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    };
+
     const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -37,5 +43,14 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         ],
     };
 
-    return [typescriptLoader, scssLoader];
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ],
+    };
+
+    return [typescriptLoader, scssLoader, svgLoader, fileLoader];
 }
