@@ -29,8 +29,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
                 options: {
                     modules: {
                         // с помощью функции ниже определяем для кого файла надо modules применять
-                        auto: (resPath: string) =>
-                            Boolean(resPath.includes('.module')),
+                        auto: (resPath: string) => Boolean(resPath.includes('.module')),
                         // Здесь мы делаем в dev режиме удобочитабельные названия
                         localIdentName: options.isDev
                             ? '[path][name]__[local]--[hash:base64:8]'
