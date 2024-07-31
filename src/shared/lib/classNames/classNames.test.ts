@@ -19,7 +19,10 @@ describe('classNames', () => {
     test('with 1 mod and additional class', () => {
         const expected = 'someClass class1 class2 hovered';
         expect(
-            classNames('someClass', { hovered: true, active: false }, ['class1', 'class2']),
+            classNames('someClass', { hovered: true, active: false }, [
+                'class1',
+                'class2',
+            ]),
         ).toBe(expected);
     });
 });
