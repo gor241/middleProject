@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 /** Функция возвращающая массив плагинов */
@@ -25,6 +26,10 @@ export function buildPlugins({
         // Для прокидывания глобальных переменных в приложение
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
+        }),
+        // Плагин для анализа размера бандла
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
         }),
         // Настройка хот-режима, без перезагрузки страницы
         isDev && new webpack.HotModuleReplacementPlugin(),

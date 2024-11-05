@@ -8,9 +8,10 @@ module.exports = {
     },
     // Определяет базовые настройки, которые будут расширены.
     extends: [
-        'plugin:react/recommended', // Включает рекомендованные правила для React из плагина eslint-plugin-react.
-        'airbnb', // Включает правила стиля и кода от Airbnb. Обычно это требование к стилю кода и лучшим практикам.
+        'plugin:react/recommended',
+        'airbnb',
         'plugin:i18next/recommended',
+        'plugin:storybook/recommended',
     ],
     // Указывает парсер для TypeScript, чтобы ESLint мог анализировать и проверять код TypeScript.
     parser: '@typescript-eslint/parser',
@@ -52,16 +53,23 @@ module.exports = {
             'error',
             {
                 markupOnly: true,
-                ignore: [
-                    'to', // Игнорируем строки в атрибуте `to`
-                ],
+                ignoreAttribute: ['data-testid', 'to'],
             },
         ], // правило для строк, что они проходят через систему интернационализации(били в переводе на всех языках)
-        'max-len': ['error', { ignoreComments: true }],
+        'max-len': ['error', { ignoreComments: true, code: 100 }],
         'linebreak-style': 0,
     },
     // Определяет глобальные переменные, которые будут доступны в вашем коде.
     globals: {
         __IS_DEV__: true, // Указывает, что глобальная переменная __IS_DEV__ доступна
     },
+    // Свойство ниже, позволяет для определённых файлов переопределить правила eslint
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            },
+        },
+    ],
 };

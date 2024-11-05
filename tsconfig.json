@@ -31,7 +31,8 @@
         // import * as React from 'react';
         // можно писать такой
         // import React from 'react';
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "types": ["jest", "@testing-library/jest-dom", "node"]
     },
     "ts-node": {
         "compilerOptions": {
@@ -39,6 +40,12 @@
         }
         // Ддя того, что бы работали svg импорты
         // "include": ["src/components", "src/custom.d.ts"]
-    }
+    },
     // Это нужно для того, что бы использовать import(вместо require) в webpack.config
+    "include": [
+        "./config/jest/setupTests.ts",
+        "./src/**/*.ts",
+        "./src/**/*.tsx"
+    ]
+    // Настройка для jest тестов, что бы ts подтягивал jest методы для DOM
 }
