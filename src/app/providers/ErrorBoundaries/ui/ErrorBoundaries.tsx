@@ -17,12 +17,12 @@ class ErrorBoundary
     }
 
     static getDerivedStateFromError(error:Error) {
-        // Update state so the next render will show the fallback UI.
+        // Обновляем состояние, чтобы при следующем render отображался резервный пользовательский интерфейс.
         return { hasError: true };
     }
 
     componentDidCatch(error:Error, errorInfo:ErrorInfo) {
-        // You can also log the error to an error reporting service
+        // Вы также можете зарегистрировать ошибку в службе отчетов об ошибках.
         console.log(error, errorInfo);
     }
 

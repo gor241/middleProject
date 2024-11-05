@@ -10,7 +10,7 @@ export default {
     testEnvironment: 'jsdom',
     // Игнорируем node_modules
     coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
-    moduleDirectories: ['node_modules'],
+    moduleDirectories: ['node_modules', 'src'],
     moduleFileExtensions: [
         'js',
         'mjs',
@@ -21,18 +21,17 @@ export default {
         'json',
         'node',
     ],
-    // Путь к корневой папке
-    rootDir: '../../',
     // Регулярное выражение, по которому мы находим файлы с тестами
     testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
     // Настройка сетапа для того что бы jest работал с DOM
-    modulePaths: ['<rootDir>/src'],
+    modulePaths: ['<rootDir>src'],
+    rootDir: '../../',
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
-        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        '\\.svg$': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
-
+    // Путь к корневой папке
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 
@@ -198,3 +197,15 @@ export default {
     // Whether to use watchman for file crawling
     // watchman: true,
 };
+
+
+
+
+
+
+
+
+
+
+
+

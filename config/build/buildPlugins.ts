@@ -32,7 +32,13 @@ export function buildPlugins({
             openAnalyzer: false,
         }),
         // Настройка хот-режима, без перезагрузки страницы
-        isDev && new webpack.HotModuleReplacementPlugin(),
-        isDev && new ReactRefreshWebpackPlugin(),
+        ...(isDev
+            ? [
+                  new webpack.HotModuleReplacementPlugin(),
+                  new ReactRefreshWebpackPlugin(),
+              ]
+            : []),
     ];
 }
+
+

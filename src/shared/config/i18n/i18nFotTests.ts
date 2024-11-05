@@ -5,14 +5,14 @@ i18n.use(initReactI18next).init({
     lng: 'ru',
     fallbackLng: 'ru',
 
-    // have a common namespace used around the full app
+    // иметь общее пространство имен, используемое для всего приложения
     ns: ['translationsNS'],
     defaultNS: 'translationsNS',
 
     debug: false,
 
     interpolation: {
-        escapeValue: false, // not needed for react!!
+        escapeValue: false, // не требуется для react!!
     },
 
     resources: { ru: { translations: {} } },
